@@ -1,0 +1,16 @@
+struct myStruct {
+    int ab; 
+    int bc;
+};
+int func1(int a, char value2) { return 0;}
+"Hello World!!!";
+int name = 7;
+float value3 = -3.78;
+break;
+for (;;) {}
+return 1;
+func3();
+if (a > b) { number = 10; }
+if (a > b) { continue; } else { break; }
+while (1) { value++; }
+int func3(){ return;}
