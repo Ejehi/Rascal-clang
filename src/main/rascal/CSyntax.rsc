@@ -20,7 +20,7 @@ syntax Stmt = expression: Exp ";"
             | structureCreateStmt: StructureCreate ";"
             ;
 
-syntax Declaration = declaration: VarType? { Id "," }+ Initialize?;
+syntax Declaration = declaration: VarType { Id "," }+ Initialize?;
 
 syntax Initialize = initialization: "=" Exp;
 
@@ -33,8 +33,8 @@ syntax VarType = integer: "int"
 
 
 syntax Parameter = param: VarType? Exp;
-syntax ParameterList = param_list: {Parameter ","}+;
-syntax ParameterDecl = param_decl: (Parameter ";")+;
+syntax ParameterList = paramlist: {Parameter ","}+;
+syntax ParameterDecl = paramdecl: {Parameter ";"}+ ";";
 
 syntax FunctionDecl = funcdecl: VarType Id "(" ParameterList? ")" Stmt;
 syntax FunctionCall = funccall: Id "(" ParameterList? ")";
@@ -55,5 +55,5 @@ syntax Exp
             > left ( mul: Exp "*" Exp | div: Exp "/" Exp )
             > left ( add: Exp "+" Exp | sub: Exp "-" Exp )
             > left ( gt: Exp "\>" Exp | lt: Exp "\<" Exp )
-            // > right (assign: Exp "=" Exp)
+            > right (assign: Exp "=" Exp)
             ;

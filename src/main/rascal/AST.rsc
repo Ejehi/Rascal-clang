@@ -6,11 +6,11 @@ data Program = statement(list[Stmt] stmt);
 
 data Stmt = expression(Exp exp)
             | declaration(Declaration decl)
-            | block(list[Stmt] boolstmt)
-            | returnKeyword(bool)
+            | block(list[Stmt] blockstmt)
+            | returnKeyword(list[Exp] explist)
             | breakKeyword()
             | continueKeyword()
-            | forLoop(bool, bool, bool, Stmt stmt)
+            | forLoop(list[Exp] explist1, list[Exp] explist2, list[Exp] explist3, Stmt stmt)
             | ifStmt(Exp exp, Stmt stmt)
             | ifElseStmt(Exp exp, Stmt stmt1, Stmt stmt2)
             | whileLoop( Exp exp, Stmt stmt)
@@ -19,7 +19,7 @@ data Stmt = expression(Exp exp)
             | structureCreateStmt(StructureCreate struct)
             ;
 
-data Declaration = declaration(bool, list[str] id_list, bool);
+data Declaration = declaration(VarType var_type, list[str] id_list, list[Initialize] init_list);
 
 data Initialize = initialization(Exp exp);
 
@@ -30,15 +30,15 @@ data VarType = integer()
                 | \float()
                 ;
 
-data Parameter = param(bool, Exp exp);
-data ParameterList = param_list(list[tuple[Parameter]] parameters);
-data ParameterDecl = param_decl(tuple[tuple[Parameter]] parameters);
+data Parameter = param(list[VarType] vartype_list, Exp exp);
+data ParameterList = paramlist(list[Parameter] param_list);
+data ParameterDecl = paramdecl(list[Parameter] paramdecl_list);
 
 
-data FunctionDecl = funcdecl(VarType var_type, str id, bool, Stmt stmt);
-data FunctionCall = funccall(str id, bool);
+data FunctionDecl = funcdecl(VarType var_type, str id, list[ParameterList] func_params, Stmt stmt);
+data FunctionCall = funccall(str id, list[ParameterList] func_params);
 
-data StructureCreate = struct_create(str id, bool);
+data StructureCreate = struct_create(str id, list[ParameterDecl] struct_params);
 
 data Exp
         = identifier(str id)
@@ -58,5 +58,5 @@ data Exp
         | sub(Exp lhs, Exp rhs)
         | gt(Exp lhs, Exp rhs)
         | lt(Exp lhs, Exp rhs)
-        // | assign(Exp lhs, Exp rhs) 
+        | assign(Exp lhs, Exp rhs) 
         ;

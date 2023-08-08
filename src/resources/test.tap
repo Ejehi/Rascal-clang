@@ -7,7 +7,7 @@ int func1(int a, char value2) { return 0;}
 int name = 7;
 float value3 = -3.78;
 break;
-for (;;) {}
+for (i = 10; i > 1; i--) {}
 return 1;
 func3();
 if (a > b) { number = 10; }
