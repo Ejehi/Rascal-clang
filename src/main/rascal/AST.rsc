@@ -6,6 +6,7 @@ data Program = statement(list[Stmt] stmt);
 
 data Stmt = expression(Exp exp)
             | declaration(Declaration decl)
+            | initialization(Initialize init)
             | block(list[Stmt] blockstmt)
             | returnKeyword(list[Exp] explist)
             | breakKeyword()
@@ -15,28 +16,25 @@ data Stmt = expression(Exp exp)
             | ifElseStmt(Exp exp, Stmt stmt1, Stmt stmt2)
             | whileLoop( Exp exp, Stmt stmt)
             | funcDeclStmt(FunctionDecl functiondecl)
-            | funcCall(FunctionCall functioncall)
             | structureCreateStmt(StructureCreate struct)
             ;
 
-data Declaration = declaration(VarType var_type, list[str] id_list, list[Initialize] init_list);
+data Declaration = declaration(VarType var_type, list[str] id);
 
-data Initialize = initialization(Exp exp);
+data Initialize = initialization(VarType var_type, str id, Exp exp);
 
 data VarType = integer()
                 | character()
                 | boolean()
-                | \void()
                 | \float()
                 ;
 
-data Parameter = param(list[VarType] vartype_list, Exp exp);
+data Parameter = param(VarType var_type, str id);
 data ParameterList = paramlist(list[Parameter] param_list);
 data ParameterDecl = paramdecl(list[Parameter] paramdecl_list);
 
 
 data FunctionDecl = funcdecl(VarType var_type, str id, list[ParameterList] func_params, Stmt stmt);
-data FunctionCall = funccall(str id, list[ParameterList] func_params);
 
 data StructureCreate = struct_create(str id, list[ParameterDecl] struct_params);
 

@@ -1,0 +1,27 @@
+test Ok1 [[ bool x = true; ]]
+
+test Ok2 [[ int x, y; ]]
+
+test Ok3 [[ "Hello"; ]]
+
+test Ok4 [[ { int x, m, n; x = 5; x++; m = 2; n = 10; } ]]
+
+test Ok5 [[ float x = 8.7; ]]
+
+test If [[ int x = 2; if(x > 1) { int y = 9; } ]]
+
+test IfElse [[ int x = 2; if(x > 1) { int y = 9; } else { char letter = 'h';}]]
+
+test While [[ int x = 10; while(x > 1) { x--; } ]]
+
+test For [[ int x; for(x = 1; x < 8; x++) {} ]]
+
+test Func [[ int myFunc(int x, char letter) { x = 8; letter = 'h';} ]]
+
+test Struct [[ struct myStruct { int x; char letter;}; ]]
+
+test Ok6 [[ return 1; ]]
+
+test Ok7 [[ continue; ]]
+
+test Ok8 [[ break; ]]

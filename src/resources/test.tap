@@ -9,8 +9,8 @@ float value3 = -3.78;
 break;
 for (i = 10; i > 1; i--) {}
 return 1;
-func3();
 if (a > b) { number = 10; }
 if (a > b) { continue; } else { break; }
 while (1) { value++; }
 int func3(){ return;}
+1;
