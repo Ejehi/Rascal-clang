@@ -13,4 +13,3 @@ if (a > b) { number = 10; }
 if (a > b) { continue; } else { break; }
 while (1) { value++; }
 int func3(){ return;}
-1;
